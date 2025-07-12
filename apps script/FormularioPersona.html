@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="formulario">
+        <label>Código:</label>
+        <input type="text" name="codigo" required>
+
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+
+        <label>Edad:</label>
+        <input type="number" name="edad" required>
+
+        <button type="button" onclick="guardar()">Guardar</button>
+    </form>
+
+    <script>
+        function guardar() {
+            const datos = {
+                codigo: document.querySelector('[name="codigo"]').value,
+                nombre: document.querySelector('[name="nombre"]').value,
+                edad: document.querySelector('[name="edad"]').value,
+            };
+
+            google.script.run
+                .withSuccessHandler(() => google.script.host.close())
+                .guardarPersona(datos);
+        }
+    </script>
+</body>
+
+</html>
